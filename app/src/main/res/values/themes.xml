@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Paises_svb" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <!--CUSTOM-->
+        <item name="primary">@color/primary_color</item>
+        <item name="accent">@color/accent_color</item>
+    </style>
+    <!-- Dark application theme. -->
+    <style name="Dark.Theme.Paises_svb" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/dark_primary_color</item>
+        <item name="colorAccent">@color/dark_accent_color</item>
+        <!--CUSTOM-->
+        <item name="primary">@color/dark_primary_color</item>
+        <item name="accent">@color/dark_accent_color</item>
+    </style>
+    <!-- Blue application theme. -->
+    <style name="Blue.Theme.Paises_svb" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/blue_primary_color</item>
+        <item name="colorAccent">@color/blue_accent_color</item>
+        <!--CUSTOM-->
+        <item name="primary">@color/blue_primary_color</item>
+        <item name="accent">@color/blue_accent_color</item>
+    </style>
+    <!-- Green application theme. -->
+    <style name="Green.Theme.Paises_svb" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/green_primary_color</item>
+        <item name="colorAccent">@color/green_accent_color</item>
+        <!--CUSTOM-->
+        <item name="primary">@color/green_primary_color</item>
+        <item name="accent">@color/green_accent_color</item>
+    </style>
+
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Paises_svb</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_vptab_list">SEARCH</string>
+    <string name="tv_vptab_game">PLAY</string>
+    <string name="tv_vptab_settings">SETTINGS</string>
+</resources>

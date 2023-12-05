@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--BASE THEME-->
+    <color name="primary_color">@color/white</color>
+    <color name="accent_color">@color/f1_red</color>
+    <!--DARK THEME-->
+    <color name="dark_primary_color">#857B7B</color>
+    <color name="dark_accent_color">#A87F18</color>
+    <!--GREEN THEME-->
+    <color name="green_primary_color">#6D9160</color>
+    <color name="green_accent_color">#243920</color>
+    <!--BLUE THEME-->
+    <color name="blue_primary_color">#B8C9D6</color>
+    <color name="blue_accent_color">@color/blue</color>
+    <!--OTHERS-->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="f1_red">#8A2222</color>
+    <color name="blue">#162D9F</color>
+    <color name="green">#2D9819</color>
+</resources>
