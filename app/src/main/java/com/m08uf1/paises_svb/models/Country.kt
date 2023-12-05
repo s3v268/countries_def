@@ -15,7 +15,9 @@ data class Country (
     val continentEn: ContinentEn,
     @SerializedName("continent_es")
     val continentEs: ContinentEs,
+    @SerializedName("capital_en")
     val capitalEn: String,
+    @SerializedName("capital_es")
     val capitalEs: String,
     val dialCode: String,
     val code2: String,

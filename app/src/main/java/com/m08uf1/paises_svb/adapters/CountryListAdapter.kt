@@ -39,8 +39,11 @@ class CountryListAdapter : RecyclerView.Adapter<CountryListAdapter.ViewHolder>()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameTv = view.findViewById<TextView>(R.id.row_tvName)
+        val capitalTv = view.findViewById<TextView>(R.id.row_tvCapital)
         fun bind(item: Country, context: Context) {
             nameTv.text = item.nameEn.toString()
+            capitalTv.text = item.capitalEn.toString()
+
         }
 
     }

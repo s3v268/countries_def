@@ -1,9 +1,12 @@
 package com.m08uf1.paises_svb.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,8 +25,9 @@ class CountryList : Fragment() {
     lateinit var countryRecycler : RecyclerView
     val countryAdapter : CountryListAdapter = CountryListAdapter()
     lateinit var countryList: MutableList<Country>
-
     private var gson: Gson = Gson()
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +38,17 @@ class CountryList : Fragment() {
         //IMPORTANT POSAR-HO
         communicatorInterface = activity as CommunicatorInterface
 
+        sharedPreferences = requireContext().getSharedPreferences("ac01Prefs", Context.MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+        editor.putBoolean("orderAsc", true)
+        editor.apply()
+
         countryList = parseJSON()
         setUpRecyclerView(countryList)
         setUpSearchBar(countryList)
 
+        setupAscDescBtn()
+        setupOrderByCountryBtn()
         /*
         binding.btnFragNext1.setOnClickListener {
             Toast.makeText(context, "lasla", Toast.LENGTH_SHORT).show()
@@ -52,6 +63,53 @@ class CountryList : Fragment() {
         //IMPORTANTE ESTO VA AL FINAL
         return binding.root
 
+    }
+
+    private fun setupAscDescBtn() {
+        var order = sharedPreferences.getBoolean("orderAsc", true)
+        binding.btnOrderDescasc.text = if (order) "DESC" else "ASC"
+
+        binding.btnOrderDescasc.setOnClickListener {
+            order = !order
+
+            if (order) {
+                //SI L'ORDRE ÉS ASC -> DESC I VICEVERSA
+                countryList.sortByDescending { it.nameEn }
+            } else {
+                // If ordered descending, change to ascending
+                countryList.sortBy { it.nameEn }
+            }
+
+            countryAdapter.updateData(countryList)
+            binding.btnOrderDescasc.text = if (order) "DESC" else "ASC"
+
+            //persistència
+            editor.putBoolean("orderAsc", order)
+            editor.apply()
+        }
+    }
+
+
+    private fun setupOrderByCountryBtn() {
+        var order = sharedPreferences.getBoolean("orderByCountry", true)
+        binding.btnOrderCountry.text = if (order) "PAÍS" else "CAPITAL"
+
+        binding.btnOrderCountry.setOnClickListener {
+            order = !order
+
+            if (order) {
+                countryList.sortBy { it.nameEn }
+            } else {
+                countryList.sortBy { it.capitalEn }
+            }
+
+            countryAdapter.updateData(countryList)
+            binding.btnOrderCountry.text = if (order) "PAÍS" else "CAPITAL"
+
+            //persistència
+            editor.putBoolean("orderByCountry", order)
+            editor.apply()
+        }
     }
 
     private fun parseJSON(): MutableList<Country> {

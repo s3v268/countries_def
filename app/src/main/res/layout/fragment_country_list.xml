@@ -69,12 +69,13 @@
                 android:text="Continente" />
 
             <Button
+                android:id="@+id/btn_order_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ordenar" />
 
             <Button
-                android:id="@+id/btn_filter_descasc"
+                android:id="@+id/btn_order_descasc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DESC" />

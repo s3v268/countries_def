@@ -38,9 +38,10 @@ class AppSettings : Fragment() {
         //IMPORTANT POSAR-HO
         communicatorInterface = activity as CommunicatorInterface
 
-        //get current theme from preferences
+        //setup shared prefs
         sharedPreferences = requireContext().getSharedPreferences("ac01Prefs", Context.MODE_PRIVATE)
         editor = sharedPreferences.edit()
+      
 
 
         binding.btnTheme1.setOnClickListener{
