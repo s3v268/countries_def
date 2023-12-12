@@ -14,6 +14,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.m08uf1.paises_svb.adapters.ViewPagerAdapter
 import com.m08uf1.paises_svb.databinding.ActivityMainBinding
+import com.m08uf1.paises_svb.fragments.CountryList
+import com.m08uf1.paises_svb.fragments.CountryQuiz
 import com.m08uf1.paises_svb.interfaces.CommunicatorInterface
 import com.m08uf1.paises_svb.models.Country
 
@@ -33,6 +35,10 @@ class MainActivity : AppCompatActivity(), CommunicatorInterface {
         val colorStateList : ColorStateList = colorStateListSetup() //ColorStateList nos permite canviar el color de una view automáticamente según su estado (enabled, selcted, etc.)
         tabLayoutMediatorSetup(colorStateList) //tabLayoutMediator conecta el tabLayout amb ViewPager2
 
+    }
+    override fun onDataReceived(dat: MutableList<Country>) {
+        val quizFragment = supportFragmentManager.findFragmentByTag("f" + 1) as? CountryQuiz
+        quizFragment?.updateData(dat)
     }
 
     private fun themeSetup(): Int {
@@ -94,6 +100,11 @@ class MainActivity : AppCompatActivity(), CommunicatorInterface {
                 //és la linia android:animateLayoutChanges="true"
                 tabArray.forEach(){it?.customView?.findViewById<TextView>(R.id.tab_tv)?.visibility = View.GONE }
                 super.onPageSelected(position)
+                //enviem les dades al joc al canviar the fragment amb swipe
+                if (position == 1) { // Check if frag és CountryQuiz (pos = 1)
+                    val countryListFragment = supportFragmentManager.findFragmentByTag("f0") as? CountryList
+                    countryListFragment?.sendGameData()
+                }
             }
         })
     }
@@ -116,6 +127,4 @@ class MainActivity : AppCompatActivity(), CommunicatorInterface {
     override fun sendNotificationMockup(tab_position: Int) {
     }
 
-    override fun onDataReceived(dat: MutableList<Country>) {
-    }
 }

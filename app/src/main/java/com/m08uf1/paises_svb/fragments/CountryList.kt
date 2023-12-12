@@ -69,10 +69,9 @@ class CountryList : Fragment() {
 
     }
 
-    private fun sendGameData() {
-        communicatorInterface.onDataReceived(countryList)
+    fun sendGameData() {
+        (activity as? CommunicatorInterface)?.onDataReceived(countryList)
     }
-
     private fun setupContinentFilter() {
 
         binding.btnFilterContinent.setOnClickListener{
@@ -80,6 +79,8 @@ class CountryList : Fragment() {
             bottomSheetFragment.show(requireFragmentManager(), bottomSheetFragment.tag)
         }
     }
+
+
 
     private fun setupFavouriteFilter() {
         var favoritesFiltered = false

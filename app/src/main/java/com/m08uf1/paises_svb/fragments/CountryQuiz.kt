@@ -9,10 +9,10 @@ import com.m08uf1.paises_svb.R
 import com.m08uf1.paises_svb.databinding.FragmentCountryQuizBinding
 import com.m08uf1.paises_svb.interfaces.CommunicatorInterface
 import com.m08uf1.paises_svb.models.Country
+import kotlin.random.Random
 
-class CountryQuiz : Fragment(), CommunicatorInterface {
+class CountryQuiz : Fragment() {
     lateinit var binding: FragmentCountryQuizBinding
-    lateinit var communicatorInterface: CommunicatorInterface
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,22 +21,20 @@ class CountryQuiz : Fragment(), CommunicatorInterface {
         // Inflate the layout for this fragment
         binding = FragmentCountryQuizBinding.inflate(inflater, container, false)
 
-        //IMPORTANT POSAR-HO
-        communicatorInterface = activity as CommunicatorInterface
+        //rebem dades la primera vegada (en la creació del fragment)
+        val countryListFragment = requireActivity().supportFragmentManager.findFragmentByTag("f0") as? CountryList
+        countryListFragment?.sendGameData()
+
+        return binding.root
         //IMPORTANTE ESTO VA AL FINAL
         return binding.root
 
     }
 
-    override fun goToFragment(fragmentNum: Int) {
-        TODO("Not yet implemented")
+    fun updateData(data: MutableList<Country>) {
+        val randomNumber = Random.nextInt(1, 101)
+        //canviem ui amb les dades noves
+        binding.tvPoints.text = data.get(randomNumber).nameEn.toString()
     }
 
-    override fun sendNotificationMockup(tab_position: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDataReceived(dat: MutableList<Country>) {
-        TODO("Not yet implemented")
-    }
 }
