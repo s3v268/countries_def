@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.m08uf1.paises_svb.adapters.ViewPagerAdapter
 import com.m08uf1.paises_svb.databinding.ActivityMainBinding
 import com.m08uf1.paises_svb.interfaces.CommunicatorInterface
+import com.m08uf1.paises_svb.models.Country
 
 class MainActivity : AppCompatActivity(), CommunicatorInterface {
     lateinit var binding : ActivityMainBinding
@@ -110,10 +111,11 @@ class MainActivity : AppCompatActivity(), CommunicatorInterface {
     }
 
     override fun goToFragment(fragmentNum: Int) {
-        TODO("Not yet implemented")
     }
 
     override fun sendNotificationMockup(tab_position: Int) {
-        TODO("Not yet implemented")
+    }
+
+    override fun onDataReceived(dat: MutableList<Country>) {
     }
 }

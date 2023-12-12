@@ -24,7 +24,8 @@ data class Country (
     val code3: String,
     val tld: String,
     val km2: Double,
-    val emoji: String
+    val emoji: String,
+    var favourite : Boolean = false,
 )
 
 enum class ContinentEn {

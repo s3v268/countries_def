@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/sheet_option1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cont_africa"
+        android:onClick="onOption1Click" />
+
+    <Button
+        android:id="@+id/sheet_option2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cont_antartica"
+        android:onClick="onOption2Click" />
+    <Button
+        android:id="@+id/sheet_option3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cont_asia"
+        android:onClick="onOption1Click" />
+
+    <Button
+        android:id="@+id/sheet_option4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cont_europe"
+        android:onClick="onOption2Click" />
+
+    <Button
+        android:id="@+id/sheet_option5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cont_namerica"
+        android:onClick="onOption1Click" />
+
+    <Button
+        android:id="@+id/sheet_option6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cont_samerica"
+        android:onClick="onOption1Click" />
+
+    <Button
+        android:id="@+id/sheet_option7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cont_oceania"
+        android:onClick="onOption1Click" />
+
+</LinearLayout>

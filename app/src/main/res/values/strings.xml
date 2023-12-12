@@ -4,4 +4,11 @@
     <string name="tv_vptab_list">SEARCH</string>
     <string name="tv_vptab_game">PLAY</string>
     <string name="tv_vptab_settings">SETTINGS</string>
+    <string name="cont_africa">áfrica</string>
+    <string name="cont_antartica">Antártida</string>
+    <string name="cont_asia">Asia</string>
+    <string name="cont_europe">Europa</string>
+    <string name="cont_namerica">América del norte\n</string>
+    <string name="cont_samerica">América del sur\n</string>
+    <string name="cont_oceania">Oceanía\n</string>
 </resources>

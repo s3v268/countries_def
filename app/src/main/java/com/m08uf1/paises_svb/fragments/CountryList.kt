@@ -49,6 +49,10 @@ class CountryList : Fragment() {
 
         setupAscDescBtn()
         setupOrderByCountryBtn()
+        setupFavouriteFilter()
+        setupContinentFilter()
+
+        sendGameData()
         /*
         binding.btnFragNext1.setOnClickListener {
             Toast.makeText(context, "lasla", Toast.LENGTH_SHORT).show()
@@ -62,6 +66,35 @@ class CountryList : Fragment() {
 
         //IMPORTANTE ESTO VA AL FINAL
         return binding.root
+
+    }
+
+    private fun sendGameData() {
+        communicatorInterface.onDataReceived(countryList)
+    }
+
+    private fun setupContinentFilter() {
+
+        binding.btnFilterContinent.setOnClickListener{
+            val bottomSheetFragment = BottomSheetFragment()
+            bottomSheetFragment.show(requireFragmentManager(), bottomSheetFragment.tag)
+        }
+    }
+
+    private fun setupFavouriteFilter() {
+        var favoritesFiltered = false
+
+
+        binding.btnFilterFavorite.setOnClickListener{
+            favoritesFiltered = !favoritesFiltered
+            if(favoritesFiltered){
+                val favorite = countryList.filter { it.favourite }
+                countryAdapter.updateData(favorite as MutableList<Country>)
+            }
+            else{
+                countryAdapter.updateData(countryList)
+            }
+        }
 
     }
 
@@ -91,23 +124,23 @@ class CountryList : Fragment() {
 
 
     private fun setupOrderByCountryBtn() {
-        var order = sharedPreferences.getBoolean("orderByCountry", true)
-        binding.btnOrderCountry.text = if (order) "PAÍS" else "CAPITAL"
+        var orderCountry = sharedPreferences.getBoolean("orderByCountry", true)
+        binding.btnOrderCountry.text = if (orderCountry) "PAÍS" else "CAPITAL"
 
         binding.btnOrderCountry.setOnClickListener {
-            order = !order
+            orderCountry = !orderCountry
 
-            if (order) {
+            if (orderCountry) {
                 countryList.sortBy { it.nameEn }
             } else {
                 countryList.sortBy { it.capitalEn }
             }
 
             countryAdapter.updateData(countryList)
-            binding.btnOrderCountry.text = if (order) "PAÍS" else "CAPITAL"
+            binding.btnOrderCountry.text = if (orderCountry) "PAÍS" else "CAPITAL"
 
             //persistència
-            editor.putBoolean("orderByCountry", order)
+            editor.putBoolean("orderByCountry", orderCountry)
             editor.apply()
         }
     }
